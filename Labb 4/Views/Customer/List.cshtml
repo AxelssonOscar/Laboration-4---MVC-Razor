@@ -1,0 +1,30 @@
+﻿@model Labb_4.ViewModels.CustomerViewModel
+
+
+
+
+
+@foreach (var customer in Model.Customers)
+{
+
+
+    <div>
+        <h4>@customer.FirstName @customer.LastName</h4>
+        <a asp-controller="Customer" asp-action="UserInfo" asp-route-id="@customer.Id">User info</a>
+    </div>
+}
+
+
+<h3>Create Customer</h3>
+<form asp-controller="Customer" method="post" asp-action="Create">
+
+        <label for="FirstName">First Name</label>
+        <input id="nameInput" asp-for="Customer.FirstName">
+        <span asp-validation-for="Customer.FirstName"></span>
+
+        <label for="FirstName">Last Name</label>
+        <input id="nameInput" asp-for="Customer.LastName">
+        <span asp-validation-for="Customer.LastName"></span>
+
+        <button type="submit">Create new Customer</button>
+</form>

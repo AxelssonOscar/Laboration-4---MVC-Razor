@@ -1,0 +1,9 @@
+﻿@model Labb_4.ViewModels.BooksViewModel
+
+<h1>Books</h1>
+@foreach (var book in Model.Books)
+{
+    <div>
+        <h4>@book.Title</h4>
+    </div>
+}

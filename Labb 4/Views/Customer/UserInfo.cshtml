@@ -1,0 +1,62 @@
+﻿@model Labb_4.ViewModels.UserInfoViewModel
+
+
+
+<h1>@Model.Customer.FirstName @Model.Customer.LastName</h1>
+<h2>@Model.Customer.Adress</h2>
+<h2>@Model.Customer.PhoneNumber</h2>
+
+
+<h3>Edit username</h3>
+<form method="post" asp-action="Edit">
+
+    <label for="FirstName">First Name</label>
+    <input id="NameInput" asp-for="Customer.FirstName">
+
+    <label for="FirstName">Last Name</label>
+    <input id="NameInput" asp-for="Customer.LastName">
+
+    <input hidden id="id" asp-for="Customer.Id" />
+
+    <button type="submit">Edit customer</button>
+</form>
+
+<form method="post" asp-action="Delete">
+    <input hidden id="id" asp-for="Customer.Id" />
+    <button type="submit">Delete customer</button>
+</form>
+
+<h1>List of borrowed books</h1>
+
+
+@foreach (var book in Model.BorrowedBooks)
+{
+    <h3>@book.Book.Title</h3>
+    <h4>Return date: @book.ReturnTime</h4>
+    @if (!book.BeenReturned)
+    {
+        <form method="post" asp-action="ReturnBook">
+            <input hidden id="id" asp-for="Customer.Id" />
+            <input hidden value="@book.Id" asp-for="BorrowedBook.Id" />
+            <button type="submit">Return book</button>
+        </form>
+    }
+
+    else
+    {
+        <h4>Is returned.</h4>
+    }
+}
+
+
+<h1>Borrow a book</h1>
+
+@foreach (var book in Model.Books)
+{
+    <h3>@book.Title</h3>
+    <form method="post" asp-action="BorrowBook">
+        <input hidden id="customer" value="@Model.Customer.Id" asp-for="Customer.Id" />
+        <input hidden value="@book.Id" asp-for="Book.Id" />
+        <button type="submit">Borrow book</button>
+    </form>
+}
