@@ -18,13 +18,23 @@
 <h3>Create Customer</h3>
 <form asp-controller="Customer" method="post" asp-action="Create">
 
-        <label for="FirstName">First Name</label>
-        <input id="nameInput" asp-for="Customer.FirstName">
-        <span asp-validation-for="Customer.FirstName"></span>
+    <label for="FirstName">First Name</label>
+    <input id="nameInput" asp-for="Customer.FirstName">
+    <a asp-validation-for="Customer.FirstName" />
 
-        <label for="FirstName">Last Name</label>
-        <input id="nameInput" asp-for="Customer.LastName">
-        <span asp-validation-for="Customer.LastName"></span>
+    <label for="LastName">Last Name</label>
+    <input id="nameInput" asp-for="Customer.LastName">
+    <a asp-validation-for="Customer.LastName" />
 
-        <button type="submit">Create new Customer</button>
+    <br />
+    <label for="PhoneNumber">Phone Number</label>
+    <input id="nameInput" asp-for="Customer.PhoneNumber">
+    <a asp-validation-for="Customer.PhoneNumber" />
+
+    <label for="Adress">Adress</label>
+    <input id="nameInput" asp-for="Customer.Adress">
+    <a asp-validation-for="Customer.Adress" />
+    <br />
+
+    <button type="submit">Create new Customer</button>
 </form>
